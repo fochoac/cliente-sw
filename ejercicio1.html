@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title>Ejercicios Chuck - 001</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+		crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+		crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+		crossorigin="anonymous"></script>
+	<script src="http://code.icndb.com/jquery.icndb.js" />
+	<link rel="import" href="https://raw.githubusercontent.com/erikringsmuth/chuck-norris-joke/master/chuck-norris-joke.html"
+		</head>
+	<script>
+xmlhttp = new XMLHttpRequest();
+xmlhttp.open('GET', 'http://api.icndb.com/jokes/random/', true);
+xmlhttp.onreadystatechange = function(){
+var textoChiste = JSON.parse(this.response).value.joke;
+console.log('chiste recibido: ' + textoChiste);
+var h1s = document.getElementsByTagName('p');
+h1s[0].innerHTML = textoChiste;
+}
+
+xmlhttp.send();
+</script>
+
+	<body>
+
+		<div class="jumbotron">
+			<h1 class="display-3">Chuck Jokes!</h1>
+			<p class="lead1">Jumbo helper text</p>
+			<hr class="my-2">
+			<p>More info</p>
+			<p class="lead">
+				<a class="btn btn-primary btn-lg " href="#" role="button" onclick="location.reload();"><i class="fa fa-lock" aria-hidden="true"> Recargar</i> </a>
+			</p>
+			
+		</div>
+
+		<ul>
+			
+		</ul>
+		<script>
+		$.get("http://api.icndb.com/jokes/random", (response) => {
+    var textoChiste = response.value.joke;
+   $(".lead1").text(textoChiste)
+   
+
+})
+	</script>
+<script>
+	
+$.icndb.getRandomJokes({ number: 10, 
+    success: (response) => {
+ response.forEach(element => { $("ul").append('<li>' + element.joke + '</li>'); });
+
+}});
+</script>
+	</body>
+
+</html>
